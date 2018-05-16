@@ -1,4 +1,4 @@
-class apt-cacher-ng(
+class apt_cacher_ng(
   $version = 'installed',
   $bind_address = false,   # BindAddress
   $dont_cache   = false,   # DontCache

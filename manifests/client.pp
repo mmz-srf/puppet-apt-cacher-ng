@@ -1,4 +1,4 @@
-class apt-cacher-ng::client($server = "", $servers = "", $autodetect = true, $verbose = true) {
+class apt_cacher_ng::client($server = "", $servers = "", $autodetect = true, $verbose = true) {
   File {
     owner  => root,
     group  => root,
@@ -27,7 +27,7 @@ class apt-cacher-ng::client($server = "", $servers = "", $autodetect = true, $ve
         ensure => absent,
       }
       file { "/etc/apt/apt.conf.d/30detectproxy":
-        source => "puppet:///modules/apt-cacher-ng/30detectproxy",
+        source => "puppet:///modules/apt_cacher_ng/30detectproxy",
       }
       case $verbose {
         true:    { $show_proxy_messages = 1 }
@@ -49,11 +49,11 @@ class apt-cacher-ng::client($server = "", $servers = "", $autodetect = true, $ve
         }
       }
       file { "/etc/apt/detect-http-proxy": 
-        source => "puppet:///modules/apt-cacher-ng/detect-http-proxy",
+        source => "puppet:///modules/apt_cacher_ng/detect-http-proxy",
         mode   => '0755',
       }
       file { "/etc/apt/proxy.conf":
-        content => template("apt-cacher-ng/apt-proxy-conf.erb"),
+        content => template("apt_cacher_ng/apt-proxy-conf.erb"),
       }
     }
     default: {
